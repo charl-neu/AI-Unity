@@ -39,10 +39,20 @@ public class AutonomousAgent : AIAgent
         //    Debug.DrawLine(transform.position, obj.transform.position, Color.red);
         //}
 
-        transform.position = Utilities.Wrap(transform.position, new Vector3(-15,-15,-15), new Vector3(15,15,15));
 
-        if (movement.Velocity.sqrMagnitude != 0)
-            transform.rotation = Quaternion.LookRotation(movement.Velocity);
+
+        transform.position = Utilities.Wrap(transform.position, new Vector3(-25,-25,-25), new Vector3(25,25,25));
+
+        if (movement.Velocity.sqrMagnitude == 0)
+        {
+            //use getting started force in combination with random wandering if the agent is not moving. we want to avoid agents doing nothing.
+            Vector3 randomDirection = Quaternion.Euler(0, Random.Range(-15f, 15f), 0) * transform.forward; // random direction in xz plane facing mostly in the direction the agent is facing
+            Vector3 direction = Vector3.Lerp(movement.Velocity.normalized, randomDirection.normalized, 0.3f).normalized * movement.maxSpeed; // slightly adjust current velocity towards random direction
+            Vector3 force = GetStartingForce(direction);
+            movement.ApplyForce(force);
+        }
+
+        transform.rotation = Quaternion.LookRotation(movement.Velocity);
     }
 
     Vector3 Seek(GameObject go)
