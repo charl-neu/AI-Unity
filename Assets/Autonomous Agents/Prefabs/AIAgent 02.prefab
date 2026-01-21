@@ -583,6 +583,9 @@ MonoBehaviour:
   movement: {fileID: 6715745433032650473}
   seekperception: {fileID: 0}
   fleeperception: {fileID: 6644233875329925700}
+  wanderRadius: 1
+  wanderDistance: 1
+  wanderDisplacement: 10
 --- !u!114 &6715745433032650473
 MonoBehaviour:
   m_ObjectHideFlags: 0
