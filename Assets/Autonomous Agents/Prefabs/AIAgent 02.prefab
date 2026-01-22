@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8566169194095944327}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg.B.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3460044366797086081}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg.F.L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73,7 +73,7 @@ GameObject:
   - component: {fileID: 2799610200307915205}
   - component: {fileID: 2277110608001883270}
   - component: {fileID: 4178867106411644689}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Gecko
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6414125859546243793}
   - component: {fileID: 10778909729123360}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh_LOD3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4679568869982808316}
   - component: {fileID: 1809274476485483424}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh_LOD0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -363,7 +363,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5216402179924870273}
   - component: {fileID: 409028769003999062}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh_LOD2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -462,7 +462,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3029834703933206918}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -494,7 +494,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4120495949848674073}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tail.01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,11 +529,12 @@ GameObject:
   - component: {fileID: 6803524645891585129}
   - component: {fileID: 4943330437956524035}
   - component: {fileID: 6715745433032650473}
+  - component: {fileID: -3598909826427400377}
   - component: {fileID: 6644233875329925700}
   - component: {fileID: 191851946425750862}
   - component: {fileID: 6382126570826243449}
   - component: {fileID: 1408295863511753850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: AIAgent 02
   m_TagString: Agent 02
   m_Icon: {fileID: 0}
@@ -583,9 +584,14 @@ MonoBehaviour:
   movement: {fileID: 6715745433032650473}
   seekperception: {fileID: 0}
   fleeperception: {fileID: 6644233875329925700}
+  flockperception: {fileID: -3598909826427400377}
   wanderRadius: 1
   wanderDistance: 1
   wanderDisplacement: 10
+  cohesionWeight: 1
+  separationWeight: 1
+  alignmentWeight: 1
+  separationRadius: 1
 --- !u!114 &6715745433032650473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -598,8 +604,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87efd42ec379aff419c68bde7e56f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KinematicMovement
-  maxSpeed: 1.2
+  maxSpeed: 4
   maxForce: 1
+--- !u!114 &-3598909826427400377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6321377838953729434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f30fbf5441771e24e9872a6287adbc74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::DistancePerception
+  info: 
+  tagName: Agent 02
+  maxDistance: 5
+  maxAngle: 180
 --- !u!114 &6644233875329925700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,7 +725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4263006604126878342}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg.B.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -734,7 +756,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5307587638282629723}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tail.02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -766,7 +788,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3902678304738199335}
   - component: {fileID: 4515087803782898647}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Mesh_LOD1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -865,7 +887,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3392769317223253482}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -901,7 +923,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7225703277200015390}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Rig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -933,7 +955,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4395845165323779333}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: leg.F.R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
