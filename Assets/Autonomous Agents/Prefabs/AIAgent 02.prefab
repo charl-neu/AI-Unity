@@ -533,7 +533,7 @@ GameObject:
   - component: {fileID: 6644233875329925700}
   - component: {fileID: 191851946425750862}
   - component: {fileID: 6382126570826243449}
-  - component: {fileID: 1408295863511753850}
+  - component: {fileID: 158583823050073588}
   m_Layer: 6
   m_Name: AIAgent 02
   m_TagString: Agent 02
@@ -604,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87efd42ec379aff419c68bde7e56f153, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::KinematicMovement
-  maxSpeed: 4
+  maxSpeed: 2.6
   maxForce: 1
 --- !u!114 &-3598909826427400377
 MonoBehaviour:
@@ -620,6 +620,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DistancePerception
   info: 
   tagName: Agent 02
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   maxDistance: 5
   maxAngle: 180
 --- !u!114 &6644233875329925700
@@ -636,6 +639,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DistancePerception
   info: 
   tagName: Agent 01
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
   maxDistance: 5
   maxAngle: 180
 --- !u!33 &191851946425750862
@@ -695,8 +701,8 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &1408295863511753850
-SphereCollider:
+--- !u!136 &158583823050073588
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -713,9 +719,11 @@ SphereCollider:
   m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
-  serializedVersion: 3
+  serializedVersion: 2
   m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Height: 3
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &6424996773138009987
 GameObject:
   m_ObjectHideFlags: 0
