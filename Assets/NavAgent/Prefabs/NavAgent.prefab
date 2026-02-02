@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NavAgent
   movement: {fileID: -8000624908126128731}
+  rotationSpeed: 5
 --- !u!136 &2138191592238834925
 CapsuleCollider:
   m_ObjectHideFlags: 0

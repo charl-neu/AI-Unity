@@ -3,12 +3,13 @@ using UnityEngine;
 public class NavAgent : AIAgent
 {
     [SerializeField] Movement movement;
+    [SerializeField, Range(1,20)] float rotationSpeed = 5f;
 
     public NavNode TargetNode { get; set; } = null;
 
     void Start()
     {
-        TargetNode = NavNode.GetRandomNavNode();
+        TargetNode = NavNode.GetNearestNavNode(transform.position);
     }
 
     void Update()
@@ -20,5 +21,19 @@ public class NavAgent : AIAgent
 
            movement.ApplyForce(force);
         }
+
+        if (movement.Velocity.magnitude > 0.01f)
+        {
+            //transform.LookAt(transform.position + movement.Velocity);
+            var targetRotation = Quaternion.LookRotation(movement.Velocity);
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRotation, Time.deltaTime * 5f);
+        }
+    }
+
+    public void OnEnterNavNode(NavNode navnode)
+    {
+        if (navnode != TargetNode) return;
+
+        TargetNode = navnode.Neighbors[Random.Range(0, navnode.Neighbors.Count)];
     }
 }
