@@ -7,6 +7,9 @@ public class NavNode : MonoBehaviour
 
     public List<NavNode> Neighbors { get { return neighbors; } }
 
+    public float Cost { get; set; } = 0;
+    public NavNode PreviousNavNode { get; set; } = null;
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.TryGetComponent<NavAgent>(out NavAgent navAgent))
@@ -62,5 +65,28 @@ public class NavNode : MonoBehaviour
 
         return nearestNavNode;
     }
+
+    public static void ResetNavNodes()
+    {
+        var navNodes = GetAllNavNodes();
+        foreach (var navNode in navNodes)
+        {
+            navNode.Cost = float.MaxValue;
+            navNode.PreviousNavNode = null;
+        }
+    }
+
+    public static void CreatePath(NavNode navNode, ref List<NavNode> path)
+    {
+        //add nodes to path
+        while (navNode != null)
+        {
+            path.Add(navNode);
+            navNode = navNode.PreviousNavNode;
+        }
+        //path is backwards so reverse it
+        path.Reverse();
+    }
+
     #endregion
 }

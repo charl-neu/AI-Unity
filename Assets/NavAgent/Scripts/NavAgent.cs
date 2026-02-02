@@ -1,7 +1,9 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class NavAgent : AIAgent
 {
+    [SerializeField] NavPath navPath;
     [SerializeField] Movement movement;
     [SerializeField, Range(1,20)] float rotationSpeed = 5f;
 
@@ -10,6 +12,11 @@ public class NavAgent : AIAgent
     void Start()
     {
         TargetNode = NavNode.GetNearestNavNode(transform.position);
+        
+        if (navPath != null)
+        {
+            TargetNode = navPath.GeneratePath(TargetNode.transform.position, TargetNode.transform.position);
+        }
     }
 
     void Update()
@@ -34,6 +41,14 @@ public class NavAgent : AIAgent
     {
         if (navnode != TargetNode) return;
 
-        TargetNode = navnode.Neighbors[Random.Range(0, navnode.Neighbors.Count)];
+        if (navPath != null)
+        {
+
+        }
+        else
+        {
+
+            TargetNode = navnode.Neighbors[Random.Range(0, navnode.Neighbors.Count)];
+        }
     }
 }
