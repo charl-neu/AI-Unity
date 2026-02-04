@@ -43,11 +43,16 @@ public class NavAgent : AIAgent
 
         if (navPath != null)
         {
-
+            //get next node from path
+            TargetNode = navPath.GetNextNavNode(navnode);
+            if (TargetNode == null)
+            {
+                //generate new path
+                TargetNode = navPath.GeneratePath(transform.position, NavNode.GetRandomNavNode().transform.position);
+            }
         }
         else
         {
-
             TargetNode = navnode.Neighbors[Random.Range(0, navnode.Neighbors.Count)];
         }
     }
