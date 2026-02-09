@@ -12,17 +12,17 @@ public class NavNode : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.TryGetComponent<NavAgent>(out NavAgent navAgent))
+        if (other.gameObject.TryGetComponent<NavPathMovement>(out NavPathMovement navMovement))
         {
-            navAgent.OnEnterNavNode(this);
+            navMovement.OnEnterNavNode(this);
         }
     }
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.TryGetComponent<NavAgent>(out NavAgent navAgent))
+        if (other.gameObject.TryGetComponent<NavPathMovement>(out NavPathMovement navMovement))
         {
-            navAgent.OnEnterNavNode(this);
+            navMovement.OnEnterNavNode(this);
         }
     }
 

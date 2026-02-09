@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 3361324690556921678}
   - component: {fileID: 4011514057194839547}
   - component: {fileID: 8513945128885984545}
-  - component: {fileID: -8000624908126128731}
   - component: {fileID: 954436092916856968}
   - component: {fileID: 2138191592238834925}
   - component: {fileID: -8610474250912314201}
+  - component: {fileID: 2348100096938121142}
+  - component: {fileID: 3873140500720028128}
   m_Layer: 0
   m_Name: NavAgent
   m_TagString: Untagged
@@ -94,20 +95,6 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-8000624908126128731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576610582355562239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 87efd42ec379aff419c68bde7e56f153, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::KinematicMovement
-  maxSpeed: 1
-  maxForce: 1
 --- !u!114 &954436092916856968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,8 +107,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 322775c555748b1469ee9122aaf0b6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NavAgent
-  movement: {fileID: -8000624908126128731}
-  rotationSpeed: 5
+  movement: {fileID: 2348100096938121142}
 --- !u!136 &2138191592238834925
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -172,3 +158,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &2348100096938121142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576610582355562239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fb90866eb4b9e24db516d6a51265d85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavPathMovement
+  maxSpeed: 5
+  maxForce: 30
+--- !u!114 &3873140500720028128
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576610582355562239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd319ecbff11764190fed43fc379630, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::NavPath
