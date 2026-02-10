@@ -129,7 +129,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21690dbf55e1e7f4faceea2550d54f30, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StateAgent
-  movement: {fileID: 0}
+  movement: {fileID: 4556945846683325961}
+  perception: {fileID: 1189819602787995193}
   state: 0
   timer: 0
   distanceToDestination: 0
@@ -168,8 +169,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4ccf7811e7207f4385ec215fa3fd62b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NavMeshMovement
-  maxSpeed: 1
-  maxForce: 1
+  maxSpeed: 5
+  maxForce: 20
 --- !u!54 &-8610474250912314201
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -216,6 +217,6 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
