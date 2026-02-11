@@ -12,14 +12,16 @@ public class StateAgent : AIAgent
         Death
     }
 
-    [SerializeField] Movement movement;
-    [SerializeField] Perception perception;
+    public Movement movement;
+    public Perception perception;
 
     [SerializeField] State state;
     [Header("Parameters")]
-    [SerializeField] float timer;
-    [SerializeField] float distanceToDestination;
-    [SerializeField] AIAgent enemy;
+    public float timer;
+    public float distanceToDestination;
+    public AIAgent enemy;
+
+    public AIStateMachine StateMachine { get; private set; } = new AIStateMachine();
 
 
     public Vector3 Destination
@@ -32,11 +34,23 @@ public class StateAgent : AIAgent
     {
         state = State.Idle;
         timer = 2.0f;
+
+        StateMachine.AddState(new AIIdleState(this));
+        StateMachine.AddState(new AIPatrolState(this));
+
+        StateMachine.SetState<AIIdleState>();
     }
 
     private void Update()
     {
-        // update parameters
+        UpdateParameters();
+        StateMachine.Update();
+
+        
+    }
+
+    private void UpdateParameters()
+    {
         timer -= Time.deltaTime;
         distanceToDestination = Vector3.Distance(transform.position, Destination);
         // look for enemies
@@ -48,51 +62,6 @@ public class StateAgent : AIAgent
         else
         {
             enemy = null;
-        }
-
-        switch (state)
-        {
-            case State.Idle:
-                if (timer <= 0)
-                {
-                    state = State.Patrol;
-                    Destination = NavNode.GetRandomNavNode().transform.position;
-                }
-                if (enemy != null)
-                {
-                    state = State.Chase;
-                }
-                break;
-            case State.Patrol:
-                if (distanceToDestination <= 0.5f)
-                {
-                    state = State.Idle;
-                    timer = Random.Range(2.0f, 4.0f);
-                }
-                if (enemy != null)
-                {
-                    state = State.Chase;
-                }
-                break;
-            case State.Chase:
-                if (enemy != null)
-                {
-                    Destination = enemy.transform.position;
-                }
-                else
-                {
-                    state = State.Idle;
-                    timer = Random.Range(1.0f, 2.0f);
-                }
-                break;
-            case State.Flee:
-                break;
-            case State.Attack:
-                break;
-            case State.Death:
-                break;
-            default:
-                break;
         }
     }
 }
