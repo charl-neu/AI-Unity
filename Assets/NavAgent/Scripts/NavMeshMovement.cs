@@ -34,4 +34,9 @@ public class NavMeshMovement : Movement
             navMeshAgent.destination = value;
         }
     }
+
+    private void Update()
+    {
+        navMeshAgent.Speed = Speed;
+    }
 }

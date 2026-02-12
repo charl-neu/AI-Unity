@@ -14,10 +14,12 @@ public class StateAgent : AIAgent
 
     public Movement movement;
     public Perception perception;
+    public Animator animator;
 
-    [SerializeField] State state;
     [Header("Parameters")]
     public float timer;
+    public float health;
+    public float maxhealth = 100.0f;
     public float distanceToDestination;
     public AIAgent enemy;
 
@@ -32,11 +34,15 @@ public class StateAgent : AIAgent
 
     private void Start()
     {
-        state = State.Idle;
-        timer = 2.0f;
 
+        health = maxhealth;
         StateMachine.AddState(new AIIdleState(this));
         StateMachine.AddState(new AIPatrolState(this));
+        StateMachine.AddState(new AIDeathState(this));
+        StateMachine.AddState(new AIHitState(this));
+        StateMachine.AddState(new AIAttackState(this));
+        StateMachine.AddState(new AIChaseState(this));
+
 
         StateMachine.SetState<AIIdleState>();
     }
@@ -62,6 +68,19 @@ public class StateAgent : AIAgent
         else
         {
             enemy = null;
+        }
+    }
+
+    public void OnDamage(float damage)
+    {
+        health -= damage;
+        if (health <= 0)
+        {
+            StateMachine.SetState<AIDeathState>();
+        }
+        else
+        {
+            StateMachine.SetState<AIHitState>();
         }
     }
 }

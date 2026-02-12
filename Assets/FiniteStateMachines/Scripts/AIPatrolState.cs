@@ -18,6 +18,12 @@ public class AIPatrolState : AIState
             // set state to idle
             agent.StateMachine.SetState<AIIdleState>();
         }
+
+        if (agent.enemy != null)
+        {
+            // set state to chase
+            agent.StateMachine.SetState<AIChaseState>();
+        }
     }
 
     public override void OnExit()

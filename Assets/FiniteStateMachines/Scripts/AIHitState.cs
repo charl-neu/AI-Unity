@@ -1,14 +1,16 @@
 using UnityEngine;
 
-public class AIIdleState : AIState
+public class AIHitState : AIState
 {
-    public AIIdleState(StateAgent agent) : base(agent)
+    public AIHitState(StateAgent agent) : base(agent)
     {
     }
 
     public override void OnEnter()
     {
-        agent.timer = 2.0f;
+        agent.timer = 1.0f;
+        agent.animator.SetTrigger("Hit");
+        agent.movement.Destination = agent.transform.position; // stop moving
     }
 
     public override void OnUpdate()
@@ -17,12 +19,6 @@ public class AIIdleState : AIState
         {
             // transition to patrol
             agent.StateMachine.SetState<AIPatrolState>();
-        }
-
-        if (agent.enemy != null)
-        {
-            // set state to chase
-            agent.StateMachine.SetState<AIChaseState>();
         }
     }
 

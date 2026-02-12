@@ -17,6 +17,7 @@ GameObject:
   - component: {fileID: 4556945846683325961}
   - component: {fileID: -8610474250912314201}
   - component: {fileID: 1572649424776040367}
+  - component: {fileID: -5633555420849549987}
   m_Layer: 0
   m_Name: StateAgent
   m_TagString: Agent 01
@@ -131,9 +132,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::StateAgent
   movement: {fileID: 4556945846683325961}
   perception: {fileID: 1189819602787995193}
-  state: 0
+  animator: {fileID: -5633555420849549987}
   timer: 0
   distanceToDestination: 0
+  enemy: {fileID: 0}
 --- !u!136 &2138191592238834925
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -220,3 +222,25 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!95 &-5633555420849549987
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 576610582355562239}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
