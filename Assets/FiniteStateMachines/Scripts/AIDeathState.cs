@@ -9,6 +9,9 @@ public class AIDeathState : AIState
     public override void OnEnter()
     {
         agent.animator.SetTrigger("Death");
+        agent.movement.Destination = agent.transform.position; // Stop movement
+
+        agent.gameObject.GetComponent<UnityEngine.AI.NavMeshAgent>().enabled = false; // Disable NavMeshAgent to prevent movement)
         GameObject.Destroy(agent.gameObject, 5f);
     }
 

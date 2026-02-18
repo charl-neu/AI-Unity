@@ -8,7 +8,7 @@ public class AIChaseState : AIState
 
     public override void OnEnter()
     {
-        agent.movement.Speed *= 2;
+        agent.movement.Velocity *= 2;
     }
 
     public override void OnUpdate()
@@ -18,17 +18,17 @@ public class AIChaseState : AIState
             agent.movement.Destination = agent.enemy.transform.position;
             if (agent.distanceToDestination <= 1.5f)
             {
-                agent.StateMachine.SetState<AIAttackState>();
+                agent.StateMachine.PushState<AIAttackState>();
             }
         } else
         {
-            agent.StateMachine.SetState<AIIdleState>();
+            agent.StateMachine.PopState();
         }
     }
 
     public override void OnExit()
     {
-        agent.movement.Speed /= 2;
+        agent.movement.Velocity /= 2;
     }
 
 }

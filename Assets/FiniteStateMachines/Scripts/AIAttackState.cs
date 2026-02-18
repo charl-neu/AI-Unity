@@ -20,7 +20,12 @@ public class AIAttackState : AIState
         
         if (agent.timer <= 0)
         {
-            agent.StateMachine.SetState<AIChaseState>();
+            agent.StateMachine.PopState();
+        }
+
+        if (agent.enemy != null)
+        {
+            agent.transform.rotation = Quaternion.LookRotation(agent.enemy.transform.position - agent.transform.position);
         }
     }
 

@@ -23,7 +23,8 @@ public class StateAgent : AIAgent
     public float distanceToDestination;
     public AIAgent enemy;
 
-    public AIStateMachine StateMachine { get; private set; } = new AIStateMachine();
+    //public AIStateMachine StateMachine { get; private set; } = new AIStateMachine();
+    public PushdownStateMachine StateMachine { get; private set; } = new PushdownStateMachine();
 
 
     public Vector3 Destination
@@ -82,5 +83,20 @@ public class StateAgent : AIAgent
         {
             StateMachine.SetState<AIHitState>();
         }
+    }
+
+    private void DrawGUI()
+    {
+
+        // draw label of current state above agent
+        GUI.backgroundColor = Color.black;
+        GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+        Rect rect = new Rect(0, 0, 100, 20);
+        // get point above agent
+        Vector3 point = Camera.main.WorldToScreenPoint(transform.position);
+        rect.x = point.x - (rect.width / 2);
+        rect.y = Screen.height - point.y - rect.height - 20;
+        // draw label with current state name
+        GUI.Label(rect, StateMachine.CurrentState.Name);
     }
 }

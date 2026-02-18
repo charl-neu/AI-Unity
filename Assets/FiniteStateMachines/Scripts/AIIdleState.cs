@@ -16,13 +16,13 @@ public class AIIdleState : AIState
         if (agent.timer <= 0)
         {
             // transition to patrol
-            agent.StateMachine.SetState<AIPatrolState>();
+            agent.StateMachine.PushState<AIPatrolState>();
         }
 
         if (agent.enemy != null)
         {
             // set state to chase
-            agent.StateMachine.SetState<AIChaseState>();
+            agent.StateMachine.PushState<AIChaseState>();
         }
     }
 

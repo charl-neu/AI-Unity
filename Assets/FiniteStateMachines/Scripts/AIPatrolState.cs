@@ -16,13 +16,14 @@ public class AIPatrolState : AIState
         if (agent.distanceToDestination <= 0.5f)
         {
             // set state to idle
-            agent.StateMachine.SetState<AIIdleState>();
+            agent.StateMachine.PopState();
         }
 
         if (agent.enemy != null)
         {
             // set state to chase
-            agent.StateMachine.SetState<AIChaseState>();
+
+            agent.StateMachine.PushState<AIChaseState>();
         }
     }
 
