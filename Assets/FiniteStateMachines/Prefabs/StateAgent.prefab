@@ -134,7 +134,10 @@ MonoBehaviour:
   perception: {fileID: 1189819602787995193}
   animator: {fileID: -5633555420849549987}
   timer: 0
+  health: 0
+  maxhealth: 100
   distanceToDestination: 0
+  stateName: 
   enemy: {fileID: 0}
 --- !u!136 &2138191592238834925
 CapsuleCollider:
@@ -219,7 +222,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 2
-  m_BaseOffset: 0
+  m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!95 &-5633555420849549987

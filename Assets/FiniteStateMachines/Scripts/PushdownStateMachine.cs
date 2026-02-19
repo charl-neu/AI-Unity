@@ -25,17 +25,16 @@ public class PushdownStateMachine
         CurrentState?.OnExit();
         stateStack.Push(nextState);
         CurrentState?.OnEnter();
-
-
     }
 
     public void PushState<T>()
     {
-        SetState(typeof(T).Name);
+        PushState(typeof(T).Name);
     }
 
     public void PopState()
     {
+        Debug.Log(stateStack);
         if (stateStack.Count > 0)
         {
             // Exit the current state
@@ -43,7 +42,7 @@ public class PushdownStateMachine
             stateStack.Pop();
             // Enter the new current state
             CurrentState?.OnEnter();
-            CurrentState?.OnUpdate();
+            //CurrentState?.OnUpdate();
         }
     }
 
@@ -85,5 +84,19 @@ public class PushdownStateMachine
         }
 
         states[state.Name] = state;
+    }
+
+    public string GetString()
+    {
+        string str = "";
+
+        var array = stateStack.ToArray();
+        for (int i = 0; i < array.Length; i++)
+        {
+            str += array[i].Name;
+            if (i < array.Length - 1) str += "\n";
+        }
+
+        return str;
     }
 }

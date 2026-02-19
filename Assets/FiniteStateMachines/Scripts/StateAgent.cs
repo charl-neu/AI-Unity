@@ -21,6 +21,7 @@ public class StateAgent : AIAgent
     public float health;
     public float maxhealth = 100.0f;
     public float distanceToDestination;
+    public string stateName;
     public AIAgent enemy;
 
     //public AIStateMachine StateMachine { get; private set; } = new AIStateMachine();
@@ -52,8 +53,8 @@ public class StateAgent : AIAgent
     {
         UpdateParameters();
         StateMachine.Update();
+        stateName = StateMachine.CurrentState?.Name;
 
-        
     }
 
     private void UpdateParameters()

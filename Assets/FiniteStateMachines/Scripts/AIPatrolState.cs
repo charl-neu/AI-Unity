@@ -13,7 +13,7 @@ public class AIPatrolState : AIState
 
     public override void OnUpdate()
     {
-        if (agent.distanceToDestination <= 0.5f)
+        if (agent.distanceToDestination <= 2.0f)
         {
             // set state to idle
             agent.StateMachine.PopState();

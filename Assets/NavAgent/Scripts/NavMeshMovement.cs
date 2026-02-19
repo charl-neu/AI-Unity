@@ -37,6 +37,6 @@ public class NavMeshMovement : Movement
 
     private void Update()
     {
-        navMeshAgent.velocity = Velocity;
+        navMeshAgent.speed = maxSpeed;
     }
 }
