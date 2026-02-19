@@ -100,4 +100,22 @@ public class StateAgent : AIAgent
         // draw label with current state name
         GUI.Label(rect, StateMachine.CurrentState.Name);
     }
+
+    private void OnGUI()
+    {
+        GUI.skin.label.alignment = TextAnchor.MiddleCenter;
+        Rect rect = new Rect(0, 0, 100, 60);
+        // transform world position of agent to screen position
+        Vector3 point = Camera.main.WorldToScreenPoint(transform.position);
+        rect.x = point.x;// - (rect.width / 2);
+        rect.y = Screen.height - point.y - rect.height - 40;
+
+        // get current state
+        string str = StateMachine.GetString();
+
+        // set box and label (text)
+        GUI.backgroundColor = Color.black;
+        GUI.Box(rect, GUIContent.none);
+        GUI.Label(rect, str);
+    }
 }

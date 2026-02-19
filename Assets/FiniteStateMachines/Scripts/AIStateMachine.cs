@@ -12,6 +12,11 @@ public class AIStateMachine
         CurrentState?.OnUpdate();
     }
 
+    public string GetString()
+    {
+        return (CurrentState != null) ? CurrentState.Name : "No State";
+    }
+
     public void SetState(string name)
     {
         if (!states.ContainsKey(name))
