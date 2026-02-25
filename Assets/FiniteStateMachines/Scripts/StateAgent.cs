@@ -15,12 +15,14 @@ public class StateAgent : AIAgent
     public Movement movement;
     public Perception perception;
     public Animator animator;
+    public Transform attackPoint;
 
     [Header("Parameters")]
     public float timer;
     public float health;
     public float maxhealth = 100.0f;
     public float distanceToDestination;
+    public float distanceToEnemy;
     public string stateName;
     public AIAgent enemy;
 
@@ -71,6 +73,7 @@ public class StateAgent : AIAgent
         {
             enemy = null;
         }
+        distanceToEnemy = (enemy != null) ? Vector3.Distance(transform.position, enemy.transform.position) : float.MaxValue;
     }
 
     public void OnDamage(float damage)
@@ -78,11 +81,11 @@ public class StateAgent : AIAgent
         health -= damage;
         if (health <= 0)
         {
-            StateMachine.SetState<AIDeathState>();
+            StateMachine.PushState<AIDeathState>();
         }
         else
         {
-            StateMachine.SetState<AIHitState>();
+            StateMachine.PushState<AIHitState>();
         }
     }
 

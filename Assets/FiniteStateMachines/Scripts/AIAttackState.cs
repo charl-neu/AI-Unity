@@ -35,7 +35,7 @@ public class AIAttackState : AIState
 
     void Attack()
     {
-        var colliders = Physics.OverlapSphere(agent.transform.position, 2.0f);
+        var colliders = Physics.OverlapSphere(agent.attackPoint.position, 0.5f);
 
         foreach (var collider in colliders)
         {

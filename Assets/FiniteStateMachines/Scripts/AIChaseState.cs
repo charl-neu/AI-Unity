@@ -16,7 +16,7 @@ public class AIChaseState : AIState
         if (agent.enemy != null)
         {
             agent.movement.Destination = agent.enemy.transform.position;
-            if (agent.distanceToDestination <= 1.5f)
+            if (agent.distanceToEnemy <= 1.0f)
             {
                 agent.StateMachine.PushState<AIAttackState>();
             }
