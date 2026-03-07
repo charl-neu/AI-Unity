@@ -27,7 +27,7 @@ public class DistancePerception : Perception
                 // check if within max angle range 
                 Vector3 direction = collider.transform.position - transform.position;
                 float angle = Vector3.Angle(direction, transform.forward);
-                if (angle <= maxpathAngle)
+                if (angle <= maxHalfAngle)
                 {
                     // add game object to result 
                     result.Add(collider.gameObject);

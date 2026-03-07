@@ -22,7 +22,7 @@ public class AutonomousAgent : AIAgent
 
     [Header("Obstacle")]
     [SerializeField] Perception obstaclePerception;
-    [SerializeField, Range(0, 5)] float obstacleWeight = 1;
+    [SerializeField, Range(0, 500)] float obstacleWeight = 1;
 
 
     float wanderAngle = 0.0f;

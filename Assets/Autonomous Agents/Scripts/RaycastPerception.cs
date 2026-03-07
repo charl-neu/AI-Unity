@@ -11,7 +11,7 @@ public class RaycastPerception : Perception
         List<GameObject> result = new List<GameObject>();
 
         // get array of directions in circle
-        Vector3[] directions = Utilities.GetDirectionsInCircle(numRays, maxpathAngle);
+        Vector3[] directions = Utilities.GetDirectionsInCircle(numRays, maxHalfAngle);
 
         // iterate through directions
         foreach (var direction in directions)
@@ -55,7 +55,7 @@ public class RaycastPerception : Perception
     public override bool GetOpenDirection(ref Vector3 openDirection) 
     {
         // get array of directions in circle
-        Vector3[] directions = Utilities.GetDirectionsInCircle(numRays, maxpathAngle);
+        Vector3[] directions = Utilities.GetDirectionsInCircle(numRays, maxHalfAngle);
 
         // iterate through directions
         foreach (var direction in directions)
@@ -74,7 +74,7 @@ public class RaycastPerception : Perception
     private void OnDrawGizmos()
     {
         if (!debug) return;
-        Vector3[] directions = Utilities.GetDirectionsInCircle(numRays, maxpathAngle);
+        Vector3[] directions = Utilities.GetDirectionsInCircle(numRays, maxHalfAngle);
         foreach (var direction in directions)
         {
             Gizmos.color = debugColor;

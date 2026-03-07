@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Agent 01
   - Agent 02
+  - Environment
   layers:
   - Default
   - TransparentFX

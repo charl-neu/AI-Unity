@@ -62,6 +62,8 @@ public class StateAgent : AIAgent
     private void UpdateParameters()
     {
         timer -= Time.deltaTime;
+        
+        animator.SetFloat("Speed", movement.Velocity.magnitude);
         distanceToDestination = Vector3.Distance(transform.position, Destination);
         // look for enemies
         var gameObjects = perception.GetGameObjects();

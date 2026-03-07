@@ -1,4 +1,4 @@
-using UnityEngine;
+    using UnityEngine;
 
 public abstract class Perception : MonoBehaviour
 {
@@ -7,7 +7,7 @@ public abstract class Perception : MonoBehaviour
     [SerializeField] protected string tagName;
     [SerializeField] protected LayerMask layerMask = Physics.AllLayers;
     [SerializeField, Range(0, 10)] protected float maxDistance = 5;
-    [SerializeField, Range(0, 180)] protected float maxpathAngle = 180;
+    [SerializeField, Range(0, 180)] protected float maxHalfAngle = 180;
 
     [Header("Debug")]
     [SerializeField] protected bool debug;
